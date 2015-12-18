@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  name: MyString
+  cookie: MyString
+  text: MyText
+  uptime: 2015-12-17 18:07:06
+  img: MyString
+  mainString_id: 
+
+two:
+  title: MyString
+  name: MyString
+  cookie: MyString
+  text: MyText
+  uptime: 2015-12-17 18:07:06
+  img: MyString
+  mainString_id: 

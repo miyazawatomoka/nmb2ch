@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  root  'indexs#index'
+
+  get   'bbs/show' =>'bbs#index'
+
+  get   '/f/:type' => 'bbs#show'
+  post  '/f/:type' => 'bbs#addNew'
+
+  get   '/t/:id' => 'strings#show'
+  post  '/t/:id' => 'strings#reply'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
