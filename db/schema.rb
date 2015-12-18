@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151218085135) do
+ActiveRecord::Schema.define(version: 20151218100801) do
 
   create_table "main_strings", force: true do |t|
     t.string   "title"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20151218085135) do
     t.datetime "modtime"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "category"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"

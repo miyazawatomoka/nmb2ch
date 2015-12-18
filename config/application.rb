@@ -13,7 +13,7 @@ module Nmb2ch
     # -- all .rb files in that directory are automatically loaded.
 
     #这是分类信息
-    $category = {'1'=>'综合版','2'=>'二次元','3'=>'游戏'}
+    $category = {'综合版'=>1,'动画'=>2,'游戏'=>3}
 
     # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.

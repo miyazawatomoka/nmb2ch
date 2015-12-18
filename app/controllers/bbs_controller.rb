@@ -3,7 +3,7 @@ class BbsController < ApplicationController
     require 'SecureRandom'
     if cookies[:cookie].blank?
       cookie = SecureRandom.hex 4
-      cookies[:cookie] = cookie
+      cookies.permanent[:cookie] = cookie
       return cookie
     else
       return cookies[:cookie]
@@ -12,12 +12,19 @@ class BbsController < ApplicationController
 
   def show
     @mainString  = MainString.new
+    if params[:type].blank? or not $category.has_key?(params[:type])
+      render '../../public/error/plate404.html'
+    end
+
   end
 
   def addNew
     newString = MainString.new
     if params[:main_string][:text].blank? then
-      #串没有内容错误
+      if params[:main_string][:text].to_s.length <10 then
+        render '../../public/string/tooShort.html'
+        return
+      end
     else
       newString.text = params[:main_string][:text]
     end
@@ -40,8 +47,8 @@ class BbsController < ApplicationController
     end
 
     newString.cookie = getCookie
-    if $category.has_value?(params[:id])
-      newString.type_id = $category[params[:id]]
+    if $category.has_key?(params[:type])
+      newString.type_id = $category[params[:type]]
     end
     if newString.save then
       render '../../public/string/succ.html'
@@ -51,8 +58,6 @@ class BbsController < ApplicationController
   end
 
   def index
-    if params
 
-    end
   end
 end
