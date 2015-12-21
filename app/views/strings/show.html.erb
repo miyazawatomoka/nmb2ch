@@ -1,2 +1,62 @@
-<h1>Strings#show</h1>
-<p>Find me in app/views/strings/show.html.erb</p>
+<div class="putString">
+  <%= form_for @subString ,url: {action: "reply"} ,html: {:multipart => true} do |f|%>
+      <div class="form-group form-inline">
+        <%= label_tag("main_string_title", "标题:") %>
+        <%= f.text_field :title,class:"form-control"%>
+      </div>
+      <div class="form-group form-inline">
+        <%= label_tag(:name, "用户名:") %>
+        <%= f.text_field :name, class:"form-control"%>
+      </div>
+      <div class="form-group form-inline">
+        <%= label_tag(:text, "正文:") %>
+        <%= f.text_area :text ,class:"form-control",rows:5%>
+      </div>
+      <div class="form-group form-inline">
+        <%= label_tag(:image, "附加图片:") %>
+        <%= f.file_field :image %>
+      </div>
+      <%= f.submit "送出",class:"btn btn-default"%>
+  <% end %>
+</div>
+
+<div>
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <span><%= @mainString.title.blank? ? '无标题': @mainString.title %></span>
+          <span><%= @mainString.name.blank? ? '无名氏': @mainString.name %></span>
+          <span><%= @mainString.uptime %></span>
+          <span>ID:<%= @mainString.cookie %></span>
+        </div>
+        <div>
+          <% if not @mainString.image.blank?%>
+              <%= image_tag @mainString.image.url %>
+          <% end %>
+        </div>
+        <div class="panel-body">
+          <%= @mainString.text %>
+        </div>
+      </div>
+</div>
+
+
+<div>
+  <% @strings.each do |s| %>
+      <div class="panel panel panel-success">
+        <div class="panel-heading">
+          <span><%= s.title.blank? ? '无标题': s.title %></span>
+          <span><%= s.name.blank? ? '无名氏': s.name %></span>
+          <span><%= s.uptime %></span>
+          <span>ID:<%= s.cookie %></span>
+        </div>
+        <div>
+          <% if not s.image.blank?%>
+              <%= image_tag s.image.url %>
+          <% end %>
+        </div>
+        <div class="panel-body">
+          <%= s.text %>
+        </div>
+      </div>
+  <% end %>
+</div>

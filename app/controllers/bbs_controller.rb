@@ -12,10 +12,14 @@ class BbsController < ApplicationController
 
   def show
     @mainString  = MainString.new
-    if params[:type].blank? or not $category.has_key?(params[:type])
+    if params[:type].blank? or not $category.has_key?(params[:type]) then
       render '../../public/error/plate404.html'
+      return
+    else
+      typeId = $category[params[:type]]
     end
-
+    params[:page].blank? ? page = 1:page = params[:page].to_i
+    @strings = MainString.where("type_id = ?", typeId).order(:modtime).limit(30).offset(30*(page-1)).all
   end
 
   def addNew

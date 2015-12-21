@@ -13,3 +13,23 @@
  *= require_tree .
  *= require_self
  */
+
+.putString{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+}
+
+.rightContainer{
+    width: 80%;
+}
+
+.navLeft{
+    width: 20%;
+    height: 100%;
+}
+
+html{
+    overflow-x: hidden;
+}
