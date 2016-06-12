@@ -48,12 +48,12 @@ class StringsController < ApplicationController
 
   def show
     id = params[:id].to_i
-    @mainString = MainString.find_by(id: id)
+    @mainString = MainString.find_by_id id
     if @mainString.blank?
       render '../../public/error/strings404.html'
     end
     @subString = SubString.new
     params[:page].blank? ? page = 1:page = params[:page].to_i
-    @strings = SubString.where("mainString_id = ?",id ).order(:uptime).limit(30).offset(30*(page-1)).all
+    @strings = @mainString.sub_strings.order(:uptime).limit(30).offset(30*(page-1)).all
   end
 end
