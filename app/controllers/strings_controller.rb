@@ -1,6 +1,5 @@
 class StringsController < ApplicationController
   def getCookie
-    require 'SecureRandom'
     if cookies[:cookie].blank?
       cookie = SecureRandom.hex 4
       cookies.permanent[:cookie] = cookie

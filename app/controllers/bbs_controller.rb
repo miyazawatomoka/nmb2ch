@@ -1,6 +1,7 @@
+# require 'securerandom'
 class BbsController < ApplicationController
   def getCookie
-    require 'securerandom'
+
     if cookies[:cookie].blank?
       cookie = SecureRandom.hex 4
       cookies.permanent[:cookie] = cookie
